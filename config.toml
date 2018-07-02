@@ -2,49 +2,68 @@ baseurl = "/"
 languageCode = "en-us"
 title = "R in Production"
 theme = "rstudio-docs-theme"
-googleAnalytics = ""
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+metadataformat = "yaml"
+pluralizeListTitles =   "false"
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 canonifyurls = true
-pluralizeListTitles = "false"
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
 
 [params]
-    author = "RStudio"
-    description = "Resources for using R in production."
-    
-    repo_url = "github.com/rstudio/production.rstudio.com"
-    
-    logo = "/rstudio-logo.png"
+	author = "RStudio"
+	description = "Resources for using R in production."
+	copyright = ""
+	
+	repo_url = "github.com/rstudio/production.rstudio.com"
 
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.11.0"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml"]
-    highlightjsTheme = "github"
+  version = "1.0.0"
+  logo = "/rstudio-logo.png"
+  favicon = "favicon.png"
 
-    MathJaxCDN = "//cdn.bootcss.com"
-    MathJaxVersion = "2.7.1"
-    
-[params.palette]
+  [params.palette]
     primary = "rstudio-dark"
-    accent = "orange"
-    
-[params.font]
+    accent  = "orange"
+
+  [params.font]
     text = "sans-serif"
     code = "Ubuntu Mono"
 
 [[menu.main]]
-    weight = 1
-    name = "About"
-    url = "/about/"
-    
+  weight = 1
+  name = "Getting Started"
+  url = "/getting-started/"
+
 [[menu.main]]
-    weight = 2
-    name = "Security"
-    url = "about/security/"
-    parent = "About"
+  weight = 2
+  name = "Managing R"
+  url = "/managing-r/"
+  
+[[menu.main]]
+  weight = 3
+  name = "Installing R"
+  parent = "Managing R"
+  url = "/managing-r/install-r/"
+  
+[[menu.main]]
+  weight = 4
+  name = "Multiple R Versions"
+  parent = "Managing R"
+  url = "/managing-r/multiple-r-versions/"
+  
+[[menu.main]]
+  weight = 5
+  name = "R Packages"
+  parent = "Managing R"
+  url = "/managing-r/r-packages/"
+
+[[menu.main]]
+  weight = 3
+  name = "Developing in R"
+  url = "/developing-r/"
 
 [social]
-    github = "rstudio/production.rstudio.com"
-
+	twitter = "rstudio"
+	github  = "rstudio"
+	email   = "info@rstudio.com"
 
 
