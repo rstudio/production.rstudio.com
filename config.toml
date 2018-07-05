@@ -14,11 +14,7 @@ googleAnalytics = ""
 	description = "Resources for using R in production."
 	copyright = ""
 	
-	repo_url = "github.com/rstudio/production.rstudio.com"
-
-  version = "1.0.0"
-  logo = "/rstudio-logo.png"
-  favicon = "favicon.png"
+	repo = "https://github.com/rstudio/production.rstudio.com"
 
   [params.palette]
     primary = "rstudio-dark"
@@ -60,6 +56,16 @@ googleAnalytics = ""
   weight = 3
   name = "Developing in R"
   url = "/developing-r/"
+
+[[menu.main]]
+  weight = 4
+  name = "Deploying R"
+  url = "/deploying-r/"
+
+[[menu.main]]
+  weight = 5
+  name = "Scaling R"
+  url = "/scaling-r/"
 
 [social]
 	twitter = "rstudio"
