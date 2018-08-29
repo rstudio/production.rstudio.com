@@ -1,0 +1,69 @@
+---
+title: Install R
+author: Andrie de Vries
+date: '2018-08-29'
+slug: install-r
+categories: []
+tags: []
+---
+
+
+
+<div id="acquire-build-dependencies" class="section level2">
+<h2>Acquire build dependencies</h2>
+<p>To build R from source, first, acquire the build dependencies for R.</p>
+<div id="ubuntu" class="section level3">
+<h3>Ubuntu</h3>
+<p>In <strong>Ubuntu</strong>, you can install build dependencies with</p>
+<pre class="sh"><code>apt-get build-dep r-base</code></pre>
+<p>Or determine and install dependencies independently by using the following command:</p>
+<pre class="sh"><code>apt-get --build-depends r-base</code></pre>
+</div>
+<div id="redhat-enterprise-linux" class="section level3">
+<h3>RedHat Enterprise Linux</h3>
+<p>In <strong>RedHat Enterprise Linux</strong> and <strong>CentOS</strong>, you can install build dependencies with</p>
+<pre class="sh"><code>yum-builddep R</code></pre>
+<p>Or determine and install dependencies independently by using the following command:</p>
+<pre class="sh"><code>yum deplist R</code></pre>
+</div>
+<div id="suse" class="section level3">
+<h3>SUSE</h3>
+<p>In <strong>SUSE</strong>, build dependencies should be installed directly with <code>zypper install &lt;dependency&gt;</code>. A partial list of the libraries that you might need is below.</p>
+<pre class="sh"><code>zypper install \
+  gcc \
+  gcc-c++ \
+  gcc-fortran \
+  readline-devel \
+  xorg-x11-devel \
+  liblzma5 \
+  xz-devel \
+  pcre-devel \
+  libcurl-devel \
+  make</code></pre>
+</div>
+</div>
+<div id="download-the-r-source-code" class="section level2">
+<h2>Download the R source code</h2>
+<p>Second, you should download and unpack the source tarball for the version of R that you want to install from CRAN. To install R-3.4.3, this might look like the following:</p>
+<pre class="sh"><code># Download and extract source code
+wget https://cran.r-project.org/src/base/R-3/R-3.4.3.tar.gz
+tar -xzvf R-3.4.3.tar.gz
+cd R-3.4.3</code></pre>
+</div>
+<div id="configure-and-make-r" class="section level2">
+<h2>Configure and make R</h2>
+<p>The final step is to configure, make, and install R. The recommended install location in this case is at /opt/R/3.4.3. If you would like to choose a different location, you can change –prefix=. To learn more about how Connect looks for R installations, see section 14.3.1.</p>
+<pre class="sh"><code># Build R from source
+./configure \
+  --prefix=/opt/R/$(cat VERSION) \
+  --enable-memory-profiling \
+  --enable-R-shlib \
+  --with-blas \
+  --with-lapack
+
+make
+sudo make install</code></pre>
+<p>It is very important that the R installation folder is not moved once it is installed from source. Libraries are statically linked, so moving the folder will break the installation of R.</p>
+<p>To test that the installation went smoothly, execute:</p>
+<pre><code>$ /opt/R/3.4.3/bin/R --version</code></pre>
+</div>

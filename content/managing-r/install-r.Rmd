@@ -1,0 +1,97 @@
+---
+title: Install R
+author: Andrie de Vries
+date: '2018-08-29'
+slug: install-r
+categories: []
+tags: []
+---
+
+## Acquire build dependencies
+
+To build R from source, first, acquire the build dependencies for R.
+
+
+### Ubuntu
+
+In **Ubuntu**, you can install build dependencies with
+
+```sh
+apt-get build-dep r-base
+```
+
+Or determine and install dependencies independently by using the following command:
+
+```sh
+apt-get --build-depends r-base
+```
+
+### RedHat Enterprise Linux
+
+In **RedHat Enterprise Linux** and **CentOS**, you can install build dependencies with
+
+```sh
+yum-builddep R
+```
+
+Or determine and install dependencies independently by using the following command:
+
+```sh
+yum deplist R
+```
+
+
+### SUSE
+
+In **SUSE**, build dependencies should be installed directly with `zypper install <dependency>`. A partial list of the libraries that you might need is below.
+
+```sh
+zypper install \
+  gcc \
+  gcc-c++ \
+  gcc-fortran \
+  readline-devel \
+  xorg-x11-devel \
+  liblzma5 \
+  xz-devel \
+  pcre-devel \
+  libcurl-devel \
+  make
+```
+  
+## Download the R source code
+  
+Second, you should download and unpack the source tarball for the version of R that you want to install from CRAN. To install R-3.4.3, this might look like the following:
+
+```sh
+# Download and extract source code
+wget https://cran.r-project.org/src/base/R-3/R-3.4.3.tar.gz
+tar -xzvf R-3.4.3.tar.gz
+cd R-3.4.3
+```
+
+## Configure and make R
+
+The final step is to configure, make, and install R. The recommended install location in this case is at /opt/R/3.4.3. If you would like to choose a different location, you can change --prefix=. To learn more about how Connect looks for R installations, see section 14.3.1.
+
+```sh
+# Build R from source
+./configure \
+  --prefix=/opt/R/$(cat VERSION) \
+  --enable-memory-profiling \
+  --enable-R-shlib \
+  --with-blas \
+  --with-lapack
+
+make
+sudo make install
+```
+
+It is very important that the R installation folder is not moved once it is installed from source. Libraries are statically linked, so moving the folder will break the installation of R.
+
+To test that the installation went smoothly, execute:
+
+```
+$ /opt/R/3.4.3/bin/R --version
+```
+

@@ -1,0 +1,10 @@
+---
+title: Multiple R Versions
+author: Andrie de Vries
+date: '2018-08-29'
+slug: multiple-r
+categories: []
+tags: []
+---
+
+...
